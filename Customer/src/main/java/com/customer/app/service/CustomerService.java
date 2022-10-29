@@ -26,7 +26,7 @@ public class CustomerService {
 		Customer cus = Customer.builder().firstName(request.firstName()).lastName(request.lastName())
 				.email(request.email()).build();
 		customerRepo.saveAndFlush(cus);
-		String url = "http://localhost:8081/api/fraud/v1/fraud-check/{customerId}";
+		String url = "http://localhost:8081/api/v1/fraud-check/{customerId}";
 		FraudCheckRespone fraudCheckRespone = restTemplate.getForObject
 				(url, FraudCheckRespone.class, cus.getId());
 		if(fraudCheckRespone.isFraudster()) {
